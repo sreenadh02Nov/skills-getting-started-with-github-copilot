@@ -4,3 +4,4 @@ httpx
 watchfiles
 email-validator
 pytest
+pytest-cov

@@ -36,11 +36,18 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: |
-          python -m pytest -q
+          python -m pytest -q --cov=src --cov-report=term-missing --cov-report=xml:coverage-${{ matrix.python-version }}.xml
 
-      - name: Upload pytest results (optional)
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-${{ matrix.python-version }}
+          path: coverage-${{ matrix.python-version }}.xml
+
+      - name: Upload pytest cache
         if: always()
         uses: actions/upload-artifact@v4
         with:

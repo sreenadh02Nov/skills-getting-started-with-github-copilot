@@ -30,6 +30,31 @@ def test_signup_for_existing_activity():
     assert response.json()["message"] == f"Signed up {email} for Chess Club"
 
 
+def test_signup_with_invalid_email_returns_422():
+    response = client.post(
+        "/activities/Chess%20Club/signup",
+        json={"email": "not-an-email"},
+    )
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["type"] == "value_error"
+
+
+def test_signup_with_missing_email_returns_422():
+    response = client.post(
+        "/activities/Chess%20Club/signup",
+        json={},
+    )
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["type"] == "missing"
+
+
+def test_signup_with_empty_body_returns_422():
+    response = client.post(
+        "/activities/Chess%20Club/signup"
+    )
+    assert response.status_code == 422
+
+
 def test_signup_for_nonexistent_activity_returns_404():
     response = client.post(
         "/activities/Nonexistent/signup",
