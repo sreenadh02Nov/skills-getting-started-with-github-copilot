@@ -20,7 +20,7 @@ Here are the screenshots used in the exercise. They are stored in the repository
 
 - **Copilot extension banner**
 
-	![copilot-extension](.github/images/copilot-extension-vscode.png)
+	![copilot-extension](.github/images/copilot-extension-vscode.webp)
 
 	Extracted text (OCR):
 
@@ -31,19 +31,19 @@ Here are the screenshots used in the exercise. They are stored in the repository
 
 - **Ask mode selection**
 
-	![ask-mode-selection](.github/images/ask-mode-selection.png)
+	![ask-mode-selection](.github/images/ask-mode-selection.webp)
 
 - **Toggle chat icon**
 
-	![toggle-chat-icon](.github/images/toggle-chat-icon.png)
+	![toggle-chat-icon](.github/images/toggle-chat-icon.webp)
 
 - **Run and Debug tab**
 
-	![run-and-debug](.github/images/run-and-debug-tab.png)
+	![run-and-debug](.github/images/run-and-debug-tab.webp)
 
 - **Open in browser icon**
 
-	![open-in-browser](.github/images/open-in-browser-icon.png)
+	![open-in-browser](.github/images/open-in-browser-icon.webp)
 
 If you'd like these images optimized (WebP) or moved into a docs folder, tell me which option you prefer and I can update the repo accordingly.
 
