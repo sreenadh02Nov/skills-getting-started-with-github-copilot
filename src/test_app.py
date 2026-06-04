@@ -22,20 +22,29 @@ def test_get_activities():
 
 def test_signup_for_existing_activity():
     email = "new.student@mergington.edu"
-    response = client.post(f"/activities/Chess%20Club/signup?email={email}")
+    response = client.post(
+        "/activities/Chess%20Club/signup",
+        json={"email": email},
+    )
     assert response.status_code == 200
     assert response.json()["message"] == f"Signed up {email} for Chess Club"
 
 
 def test_signup_for_nonexistent_activity_returns_404():
-    response = client.post("/activities/Nonexistent/signup?email=test@mergington.edu")
+    response = client.post(
+        "/activities/Nonexistent/signup",
+        json={"email": "test@mergington.edu"},
+    )
     assert response.status_code == 404
     assert response.json()["detail"] == "Activity not found"
 
 
 def test_duplicate_signup_returns_400():
     email = "michael@mergington.edu"
-    response = client.post(f"/activities/Chess%20Club/signup?email={email}")
+    response = client.post(
+        "/activities/Chess%20Club/signup",
+        json={"email": email},
+    )
     assert response.status_code == 400
     assert response.json()["detail"] == "Student is already signed up"
 
@@ -51,12 +60,14 @@ def test_activity_capacity_is_enforced():
 
     try:
         first_response = client.post(
-            f"/activities/{activity_name}/signup?email=first.student@mergington.edu"
+            f"/activities/{activity_name}/signup",
+            json={"email": "first.student@mergington.edu"},
         )
         assert first_response.status_code == 200
 
         second_response = client.post(
-            f"/activities/{activity_name}/signup?email=second.student@mergington.edu"
+            f"/activities/{activity_name}/signup",
+            json={"email": "second.student@mergington.edu"},
         )
         assert second_response.status_code == 400
         assert second_response.json()["detail"] == "Activity is full"

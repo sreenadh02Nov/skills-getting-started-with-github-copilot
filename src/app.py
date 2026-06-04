@@ -8,7 +8,7 @@ for extracurricular activities at Mergington High School.
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
-from pydantic import EmailStr
+from pydantic import BaseModel, EmailStr
 import os
 from pathlib import Path
 
@@ -53,14 +53,18 @@ def get_activities():
     return activities
 
 
+class SignupRequest(BaseModel):
+    email: EmailStr
+
+
 @app.post("/activities/{activity_name}/signup")
-def signup_for_activity(activity_name: str, email: EmailStr):
+def signup_for_activity(activity_name: str, request: SignupRequest):
     """Sign up a student for an activity"""
     # Validate activity exists
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
 
-    # Get the specific activity
+    email = request.email
     activity = activities[activity_name]
 
     # Prevent duplicate signups
