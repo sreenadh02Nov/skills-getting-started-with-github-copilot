@@ -40,3 +40,11 @@ Thumbs.db
 .actrc*
 
 __pycache__/
+
+# Converted images (use .webp versions instead) #
+##################################################
+.github/images/ask-mode-selection.png
+.github/images/copilot-extension-vscode.png
+.github/images/open-in-browser-icon.png
+.github/images/run-and-debug-tab.png
+.github/images/toggle-chat-icon.png
