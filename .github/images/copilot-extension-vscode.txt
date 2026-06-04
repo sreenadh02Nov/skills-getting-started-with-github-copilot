@@ -1,0 +1,6 @@
+GitHub Copilot
+Your AI pair programmer
+GitHub
+988ms
+
+(Raw OCR: "a GitHub Copilot  988ms\n& Your Al pair programmer\n@ GitHub $83\nLa")
